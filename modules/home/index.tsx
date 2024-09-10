@@ -5,6 +5,7 @@ import { HomeProps } from '@modules/home/types';
 
 export default function Home({ className }: HomeProps) {
   const { query } = useRouter();
+
   return (
     <HomeWrapper className={className}>
       <span

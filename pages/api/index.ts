@@ -75,7 +75,7 @@ const puppeteerHandler = async (url: string, filePath: string) => {
 
 interface Response {
   data?: any;
-  error?: { message: string };
+  error?: { message: string; cache?: Record<string, string> };
   isSuccess: boolean;
 }
 
@@ -107,15 +107,17 @@ const handler: NextApiHandler<Response> = async (req, res) => {
       [key: string]: string;
     };
 
+    const cache = readCache();
+
     if (!targetPath)
       return res.status(400).json({
-        error: { message: 'targetPath is required' },
+        error: { message: 'targetPath is required', cache },
         isSuccess: false,
       });
 
     if (!targetPath.startsWith('/'))
       return res.status(400).json({
-        error: { message: 'Invalid targetPath' },
+        error: { message: 'Target path should start with /' },
         isSuccess: false,
       });
 
@@ -124,7 +126,6 @@ const handler: NextApiHandler<Response> = async (req, res) => {
 
     ensurePdfDirectoryExists();
 
-    const cache = readCache();
     let pdfFileName = cache[url];
     if (!pdfFileName) {
       pdfFileName = `${nanoid()}.pdf`;

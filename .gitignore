@@ -40,3 +40,6 @@ package-lock.json
 *.log
 *.css
 *.map
+
+*cache*
+*pdf*

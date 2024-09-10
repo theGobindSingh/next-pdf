@@ -4,6 +4,8 @@
   "env": { "browser": true, "es2020": true },
   "extends": [
     "eslint:recommended",
+    "next",
+    "next/core-web-vitals",
     "plugin:react-hooks/recommended",
     "plugin:node/recommended",
     "plugin:react/recommended",
@@ -96,7 +98,10 @@
     ],
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
-    "react-refresh/only-export-components": ["warn", { "allowConstantExport": true }],
+    "react-refresh/only-export-components": [
+      "warn",
+      { "allowConstantExport": true }
+    ],
     "prettier/prettier": "error",
     "no-console": "warn",
     "consistent-return": "off",

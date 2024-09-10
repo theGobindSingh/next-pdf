@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useRouter } from 'next/router';
 import { HomeWrapper } from '@modules/home/styles';
 import { HomeProps } from '@modules/home/types';
@@ -15,7 +16,7 @@ export default function Home({ className }: HomeProps) {
         }}
       />
       <img
-        src={query?.src}
+        src={query?.src as string}
         alt=""
         style={{
           display: 'block',

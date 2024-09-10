@@ -1,6 +1,6 @@
+import { useRouter } from 'next/router';
 import { HomeWrapper } from '@modules/home/styles';
 import { HomeProps } from '@modules/home/types';
-import { useRouter } from 'next/router';
 
 export default function Home({ className }: HomeProps) {
   const { query } = useRouter();
@@ -10,8 +10,19 @@ export default function Home({ className }: HomeProps) {
         dangerouslySetInnerHTML={{
           __html: `queries: ${JSON.stringify(query, null, 2)}`.replace(
             /\n/g,
-            '<br>'
+            '<br>',
           ),
+        }}
+      />
+      <img
+        src={query?.src}
+        alt=""
+        style={{
+          display: 'block',
+          margin: '3rem',
+          height: 200,
+          width: 200,
+          objectFit: 'contain',
         }}
       />
     </HomeWrapper>

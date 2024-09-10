@@ -12,7 +12,7 @@ import { nanoid } from 'nanoid/non-secure';
 import puppeteer, { type Browser } from 'puppeteer';
 
 let globalBrowser: Browser | null = null;
-const folderName = 'pdfS';
+const folderName = 'public/pdfS';
 const pdfDir = path.join(process.cwd(), folderName);
 const cacheFile = path.join(process.cwd(), 'cache.json');
 
@@ -137,6 +137,7 @@ const handler: NextApiHandler<Response> = async (req, res) => {
     return res.status(200).json({
       data: {
         url,
+        psdUrl: `${baseUrl}/pdfS/${pdfFileName}`,
         pdfFileName,
         timeTaken: Date.now() - startTime,
       },
